@@ -1,4 +1,7 @@
-﻿namespace Hemuppgift_Arv_Temp
+﻿using Hemuppgift_Arv_Temp.Game;
+using System.Security.Cryptography.X509Certificates;
+
+namespace Hemuppgift_Arv_Temp
 {
     internal class TakePins
     {
@@ -11,7 +14,10 @@
 
         static void Main(string[] args)
         {
-            // Main blocket. 
+            Board board = new Board();
+            {
+                Console.WriteLine(board);
+            }
         }
 
         
