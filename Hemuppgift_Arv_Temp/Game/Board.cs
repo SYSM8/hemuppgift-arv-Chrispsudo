@@ -32,7 +32,7 @@ namespace Hemuppgift_Arv_Temp.Game
 
         public int TakePins(int numberOfPins)
         {
-            if ((numberOfPins < 1) || (numberOfPins > 2 || numberOfPins > NoPins))
+            if (numberOfPins < 1 || numberOfPins > 2 || numberOfPins > NoPins)
             {
                 throw new ArgumentException("Du kan ta 1 eller 2 stickor");
             }

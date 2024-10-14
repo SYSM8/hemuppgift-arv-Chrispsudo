@@ -15,11 +15,58 @@ namespace Hemuppgift_Arv_Temp
         static void Main(string[] args)
         {
             
+            // Skapa en board med ett antal önskade stickor. 20 i mitt exempel.
+
+            Board board = new Board(20);
+
+            // Skapa en HumanPlayer och en ComputerPlayer.
+
+            HumanPlayer human = new HumanPlayer("Human");
+
+            ComputerPlayer computer = new ComputerPlayer("Computer");
+
+
+            // Spelloopen
+
+            while (!board.IsGameOver())
+            {
+
+                // HumanPlayer spelar
+
+                try
+                {
+                    Console.WriteLine($"Det finns {board.GetNoPins()} stickor kvar.");
+                    int humanPins = human.TakePins(board);
+                    Console.WriteLine($"HumanPlayer tog {humanPins} stickor.");
+                }
+                // Fånga exception och börja om loopen om det blev fel.
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    continue;
+                }
+                // Kontrollera om spelet är slut.
+                if (board.IsGameOver())
+                {
+                    Console.WriteLine("Spelet är slut! HumanPlayer vann!");
+                    break;
+                }
+
+                // ComputerPlayer spelar
+
+                try
+                {
+
+                }
+                
+
+
+
         }
 
     }
 
         
 
-    }
+    
 }
