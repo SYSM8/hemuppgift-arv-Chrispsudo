@@ -21,6 +21,21 @@ namespace Hemuppgift_Arv_Temp.Game
         {
             int numberOfPins;
             int remainingPins = board.GetNoPins();
+
+            if (remainingPins <= 3)
+            {
+                numberOfPins = remainingPins; // Ta alla stickor om det är 3 eller färre.
+            }
+            else
+            {
+                 numberOfPins = (remainingPins - 3) % 3; // Lämna 3 stickor 
+                if (numberOfPins == 0) numberOfPins = 1; // Om det är 0, ta 1 sticka
+            }
+
+            Console.WriteLine($"SmartComputerPlayer tar {numberOfPins} stickor!");
+            return board.TakePins(numberOfPins);
+
+
         }
 
 
