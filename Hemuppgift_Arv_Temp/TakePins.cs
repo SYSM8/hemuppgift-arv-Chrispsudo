@@ -15,65 +15,72 @@ namespace Hemuppgift_Arv_Temp
         static void Main(string[] args)
         {
 
-            // Skapa en board med ett antal önskade stickor. 20 i mitt exempel.
-
+            // Skapa en board med ett antal önskade stickor (20 i detta exempel)
             Board board = new Board(20);
 
-            // Skapa en HumanPlayer och en ComputerPlayer.
-
+            // Skapa en HumanPlayer
             HumanPlayer human = new HumanPlayer("Human");
 
-            ComputerPlayer computer = new ComputerPlayer("Computer");
+            // Välja mellan ComputerPlayer eller SmartComputerPlayer
+            Console.WriteLine("Välj alternativ du vill spela mot (1: ComputerPlayer, 2: SmartComputerPlayer):");
+            string choice = Console.ReadLine();
 
+            Player computer;
+
+            if (choice == "2")
+            {
+                computer = new SmartComputerPlayer("SmartComputerPlayer"); 
+            }
+
+            else
+            {
+                computer = new ComputerPlayer("ComputerPlayer");
+            }
 
             // Spelloopen
-
             while (!board.IsGameOver())
             {
-
                 // HumanPlayer spelar
-
                 try
                 {
                     Console.WriteLine($"Det finns {board.GetNoPins()} stickor kvar.");
                     int humanPins = human.TakePins(board);
                     Console.WriteLine($"HumanPlayer tog {humanPins} stickor.");
                 }
-                // Fånga exception och börja om loopen om det blev fel.
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    continue;
+                    continue; // Återgå till början av loopen om det blev fel
                 }
-                // Kontrollera om spelet är slut.
+
+                // Kontrollera om spelet är slut
                 if (board.IsGameOver())
                 {
                     Console.WriteLine("Spelet är slut! HumanPlayer vann!");
-                    break;
+                    break; // Avsluta loopen om spelet är över
                 }
 
                 // ComputerPlayer spelar
-
                 try
                 {
                     int computerPins = computer.TakePins(board);
-                    Console.WriteLine($"ComputerPlayer tog {computerPins} stickor.");
+                    Console.WriteLine($"{computer.GetUserId()} tog {computerPins} stickor.");
                 }
-                // Fånga exception, börja om loopen om det blev fel.
                 catch (ArgumentException ex)
                 {
                     Console.WriteLine(ex.Message);
-                    continue;
+                    continue; // Återgå till början av loopen om det blev fel
                 }
-                // Kontroller om spelet är över.
+
+                // Kontrollera om spelet är över
                 if (board.IsGameOver())
                 {
-                    Console.WriteLine("Spelet är slut! ComputerPlayer vann!");
-                    break;
+                    Console.WriteLine($"Spelet är slut! {computer.GetUserId()} vann!");
+                    break; // Avsluta loopen om spelet är över
                 }
-
             }
 
+            Console.Read();
         }
     }
 }
