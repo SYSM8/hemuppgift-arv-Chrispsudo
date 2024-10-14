@@ -9,7 +9,7 @@ namespace Hemuppgift_Arv_Temp.Game
     public abstract class Player
     {   
         // Egenskap för att lagra userId.
-        public string UserId { get; set; }
+        public string UserId { get; private set; }  // privat set för att skydda så att det inte ändras.
 
         // Konstruktor för att ställa in userId.
 
