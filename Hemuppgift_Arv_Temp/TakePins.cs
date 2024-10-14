@@ -14,7 +14,7 @@ namespace Hemuppgift_Arv_Temp
 
         static void Main(string[] args)
         {
-            
+
             // Skapa en board med ett antal önskade stickor. 20 i mitt exempel.
 
             Board board = new Board(20);
@@ -56,17 +56,24 @@ namespace Hemuppgift_Arv_Temp
 
                 try
                 {
-
+                    int computerPins = computer.TakePins(board);
+                    Console.WriteLine($"ComputerPlayer tog {computerPins} stickor.");
                 }
-                
+                // Fånga exception, börja om loopen om det blev fel.
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    continue;
+                }
+                // Kontroller om spelet är över.
+                if (board.IsGameOver())
+                {
+                    Console.WriteLine("Spelet är slut! ComputerPlayer vann!");
+                    break;
+                }
 
-
+            }
 
         }
-
     }
-
-        
-
-    
 }
