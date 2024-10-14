@@ -11,6 +11,12 @@ namespace Hemuppgift_Arv_Temp
         // F2 b, Player p = new HumanPlayer("Alicent");
         //       HumanPlayer p = new ComputerPlayer("Aemond");
 
+        // D4. Frågan är vad vi har vunnit på att använda oss av arv från superklassen Player,
+        // Jag tänker att vi har skapet huvudstrukturen med Player klassen och vad den skall ärva.
+        // Vilket gör att subklasserna ärver det så vi slipper koda det i varje block. 
+
+        // En abstract metod gör så att metoden är deklarerad i huvudklassen, så när man skapar 
+        // subklassen så finns metoden med, man måste bara implementera hur man vill använda den.
 
         static void Main(string[] args)
         {

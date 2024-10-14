@@ -16,17 +16,25 @@ namespace Hemuppgift_Arv_Temp
 
         public override int TakePins(Board board)
         {
-            int numberOfPins;
             int remainingPins = board.GetNoPins();
-
-            if (remainingPins <= 3)
+            int numberOfPins;
+            
+            // Om det är 3 eller färre kvar, ta alla.
+            if (remainingPins <= 2)
             {
-                numberOfPins = remainingPins; // Ta alla om det är 3 eller mindre.
+                numberOfPins = remainingPins; 
             }
             else
-            {
-                numberOfPins = (remainingPins - 3) % 3;
+            {   // Beräkna hur många stickor att lämna kvar för att maxa chansen att vinna.
+                numberOfPins = (remainingPins - 2) % 2;
                 if (numberOfPins == 0) numberOfPins = 1;
+            }
+
+            // Kontrollera så att den inte försöker ta mer än vad som finns kvar.
+
+            if (numberOfPins > board.GetNoPins())
+            {
+                numberOfPins = board.GetNoPins(); // Justera till max som finns kvar. 
             }
 
             return board.TakePins(numberOfPins);
