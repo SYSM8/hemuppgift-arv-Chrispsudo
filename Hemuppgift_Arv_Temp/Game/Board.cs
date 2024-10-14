@@ -24,7 +24,7 @@ namespace Hemuppgift_Arv_Temp.Game
         public void SetUp(int pins)
         {
             if (pins < 0)
-                throw new ArgumentException("Antalet stickor kan inte vara negitvt.");
+                throw new ArgumentException("Antalet stickor kan inte vara negativt.");
             NoPins = pins;
         }
 
