@@ -28,7 +28,6 @@ namespace Hemuppgift_Arv_Temp.Game
 
             // Tar stickorna från board.
 
-            Console.WriteLine($"Datorn tar {numberOfPins} stickor");
             return board.TakePins(numberOfPins);
 
         }
