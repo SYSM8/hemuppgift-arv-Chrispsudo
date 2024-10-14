@@ -7,13 +7,25 @@ using System.Threading.Tasks;
 namespace Hemuppgift_Arv_Temp.Game
 {
     public abstract class Player
-    {
-        public string Name { get; set; }
+    {   
+        // Egenskap för att lagra userId.
+        public string UserId { get; set; }
 
-        protected Player(string name)
+        // Konstruktor för att ställa in userId.
+
+        public Player(string userId)
         {
-            Name = name;
+            UserId = userId;
         }
+
+        // Metod för att hämta in userId.
+
+        public string GetUserId()
+        {
+            return UserId;
+        }
+
+        // Abstrakt metod för att ta stickor från ett Board-objekt.
 
         public abstract int TakePins(Board board);
 
